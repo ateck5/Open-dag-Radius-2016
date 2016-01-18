@@ -1,12 +1,15 @@
-var bwidth = $('.zlam').outerWidth();
-var bheight = $('.zlam').outerHeight();
-var cwidth = $('.middle').outerWidth();
-var cheight = $('.middle').outerHeight();
-var counter = 0;
-var start = false;
-var timer = 60;
-var audiobg = document.getElementById("myAudio")
-var muted = false;
+var bwidth = $('.zlam').outerWidth(),
+    bheight = $('.zlam').outerHeight();
+    
+var cwidth = $('.middle').outerWidth(),
+    cheight = $('.middle').outerHeight();
+
+var counter = 0,
+    start = false,
+    timer = 60;
+    
+var audiobg = document.getElementById("myAudio"),
+    muted = false;
 
 $(function(){
     startMusic();
@@ -63,19 +66,11 @@ var stopGame = function() {
 };
 
 $('#btn_startstop').on('click', function(){
-    if (start) {
-        startGame();
-    } else {
-        stopGame();
-    }
+    start ? startGame() : stopGame();
 });
 
 $('#btn_audio').on('click', function(){
-    if (muted) {
-        startMusic();
-    } else {
-        stopMusic();
-    }
+    muted ? startMusic() : stopMusic();
 });
 
 setInterval(function(){
