@@ -88,18 +88,13 @@ setInterval(function(){
     if (start) {
         timer-=1;
         if (timer == 0) {
-            //alert('timer is 0');
             $('.right').html(
                 '<h3>You scored: ' + counter + '</h3>'
                 + '<h3>you want to try again?</h3>'
+                + '<input type="text" id="name" name="name">'
                 + '<button class="btn" id="btn_again">Retry</button>'
             );
-            $('#btn_startstop').trigger('click');
-            //start = false;
-            //$('#btn_startstop').html('Start');
-            //timer = 60;
-            //counter = 0;
-            //$('#timer').removeClass('text-danger');
+            start = false;
 
         }
         if (timer <= 10 ) {
@@ -113,6 +108,14 @@ setInterval(function(){
 }, 1000);
 
 $('.right').on('click', '#btn_again', function(){
+
+    var name = $('#name').val();
+    if($(name == null) ){
+        var name = 'Nameless';
+    }
+    console.log(name + ' ' + counter);
+
+    $('#btn_startstop').trigger('click');
     $('#btn_startstop').trigger('click');
 });
 
