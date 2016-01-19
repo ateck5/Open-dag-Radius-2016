@@ -16,6 +16,8 @@ var audiobg = document.getElementById("myAudio"),
     muted = false;
 
 $(function(){
+    if (window.location)
+    setInterval(updateScoreBoard, 2000);  
     startMusic();
 });
 
@@ -174,6 +176,23 @@ function setScore(username, score) {
     highscores.push(input);
     localStorage['zlamHighScore'] = JSON.stringify(highscores);
 
+}
+
+function updateScoreBoard() {
+    var highscores = JSON.parse(localStorage.getItem('zlamHighScore')) || [];
+
+    highscores = JSLINQ(highscores).
+                    OrderByDescending(function(item){
+                      return item.score 
+                    });
+
+    var container = $('#zlamHighScore');
+    container.empty();
+
+    for (var i = 0 ; i < 10; i++)
+    {
+      container.append('<tr><td>'+ (i+1) +'</td><td>' + highscores.items[i].username + '</td><td>' + highscores.items[i].score + '</td></tr>');
+    }
 }
 
 
