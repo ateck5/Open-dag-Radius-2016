@@ -1,3 +1,6 @@
+(function(){
+
+
 var bwidth = $('.zlam').outerWidth(),
     bheight = $('.zlam').outerHeight();
     
@@ -6,7 +9,8 @@ var cwidth = $('.middle').outerWidth(),
 
 var counter = 0,
     start = false,
-    timer = 60;
+    username,
+    timer = 10;
     
 var audiobg = document.getElementById("myAudio"),
     muted = false;
@@ -37,7 +41,7 @@ var startGame = function() {
     if (start) {
         start = false;
         $('#btn_startstop').html('Start');
-        timer = 60;
+        timer = 10;
         $('#timer').removeClass('text-danger');
         $('.middle').css({'background' : '#4DB6AC'});
         $('.zlam').css({
@@ -94,7 +98,14 @@ setInterval(function(){
                 + '<h3>you want to try again?</h3>'
                 + '<button class="btn" id="btn_again">Retry</button>'
             );
+            var endScore = counter;
             $('#btn_startstop').trigger('click');
+
+            if ( username = prompt('Thanks for playing! What is your username?') )
+            {
+                setScore(username, endScore);                
+            }
+
             //start = false;
             //$('#btn_startstop').html('Start');
             //timer = 60;
@@ -149,3 +160,21 @@ $('.zlam').on('click', function(){
         })
     }
 });
+
+
+function setScore(username, score) {
+    
+    var highscores = JSON.parse(localStorage.getItem('zlamHighScore')) || [];
+
+    var input = {
+      username: username,
+      score: score
+    }
+
+    highscores.push(input);
+    localStorage['zlamHighScore'] = JSON.stringify(highscores);
+
+}
+
+
+})();
