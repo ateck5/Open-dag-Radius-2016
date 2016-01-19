@@ -13,15 +13,19 @@ var audiobg = document.getElementById("myAudio"),
 
 $(function(){
     startMusic();
+    setInterval(updateScoreBoard, 4000);
 });
 
 var startMusic = function() {
     muted = false;
     $('#btn_audio').html('Mute');
+    if (audiobg)
+    {
     audiobg.play();
     audiobg.autoplay = true;
     audiobg.loop = true;
-    audiobg.volume = 0.3;
+    audiobg.volume = 0.3; 
+    }
 };
 
 var stopMusic = function() {
@@ -96,7 +100,6 @@ setInterval(function(){
             );
             $('#btn_startstop').css('display', 'none');
             start = false;
-
         }
         if (timer <= 10 ) {
             $('#timer').addClass('text-danger');
@@ -146,12 +149,47 @@ $('.zlam').on('click', function(){
 $('.right').on('click', '#btn_again', function(){
 
     var name = $('#name').val();
-    if($(name == null) ){
-        var name = 'Nameless';
+
+    if ($.trim(name) == '') {
+      var name = 'Nameless';
     }
+
     console.log(name + ' ' + counter);
+    
+    setScore(name, counter);
+
     $('#btn_startstop').css('display', 'inline');
 
     $('#btn_startstop').trigger('click');
     $('#btn_startstop').trigger('click');
 });
+
+function setScore(username, score) {
+    
+    var highscores = JSON.parse(localStorage.getItem('zlamHighScore')) || [];
+
+    var input = {
+      username: username,
+      score: score
+    }
+
+    highscores.push(input);
+    localStorage['zlamHighScore'] = JSON.stringify(highscores);
+
+}
+
+function updateScoreBoard() {
+    var highscores = JSON.parse(localStorage.getItem('zlamHighScore')) || [];
+
+    highscores = JSLINQ(highscores).
+                    OrderByDescending(function(item){
+                      return item.score 
+                    });
+    var container = $('#zlamHighScore');
+    container.empty();
+
+    for (var i = 0 ; i < 10; i++)
+    {
+      container.append('<tr><td>'+ (i+1) +'</td><td>' + highscores.items[i].username + '</td><td>' + highscores.items[i].score + '</td></tr>');
+    }
+}
