@@ -92,7 +92,7 @@ setInterval(function(){
                 '<h3>You scored: ' + counter + '</h3>'
                 + '<h3>Please enter your name</h3>'
                 + '<input type="text" id="name" name="name">'
-                + '<button class="btn" id="btn_again">Retry</button>'
+                + '<button class="btn" id="btn_again">Submit Score</button>'
             );
             $('#btn_startstop').css('display', 'none');
             start = false;
