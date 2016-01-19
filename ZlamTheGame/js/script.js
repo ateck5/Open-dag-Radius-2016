@@ -90,10 +90,11 @@ setInterval(function(){
         if (timer == 0) {
             $('.right').html(
                 '<h3>You scored: ' + counter + '</h3>'
-                + '<h3>you want to try again?</h3>'
+                + '<h3>Please enter your name</h3>'
                 + '<input type="text" id="name" name="name">'
                 + '<button class="btn" id="btn_again">Retry</button>'
             );
+            $('#btn_startstop').css('display', 'none');
             start = false;
 
         }
@@ -106,18 +107,6 @@ setInterval(function(){
     }
 
 }, 1000);
-
-$('.right').on('click', '#btn_again', function(){
-
-    var name = $('#name').val();
-    if($(name == null) ){
-        var name = 'Nameless';
-    }
-    console.log(name + ' ' + counter);
-
-    $('#btn_startstop').trigger('click');
-    $('#btn_startstop').trigger('click');
-});
 
 $('.zlam').on('mouseover', function(){
     if (start) {
@@ -137,6 +126,7 @@ $('.zlam').on('mouseover', function(){
     }
 
 });
+
 $('.zlam').on('click', function(){
     if (start) {
         $('#score').html('Score: ' + (counter += 1));
@@ -151,4 +141,17 @@ $('.zlam').on('click', function(){
             'transition': '2s'
         })
     }
+});
+
+$('.right').on('click', '#btn_again', function(){
+
+    var name = $('#name').val();
+    if($(name == null) ){
+        var name = 'Nameless';
+    }
+    console.log(name + ' ' + counter);
+    $('#btn_startstop').css('display', 'inline');
+
+    $('#btn_startstop').trigger('click');
+    $('#btn_startstop').trigger('click');
 });
