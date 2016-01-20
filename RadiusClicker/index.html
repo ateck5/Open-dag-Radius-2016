@@ -1,0 +1,106 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Radius Clicker</title>
+    <link rel="stylesheet" href="http://bootswatch.com/paper/bootstrap.min.css">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<audio id="myAudio">
+    <source src="media/audio/Modigs-SerenadeofWater.mp3" type="audio/mpeg">
+</audio>
+
+<div class="left">
+    <h3 id="score">Score: 0</h3>
+    <h3 id="totalScore">Total Score: 0</h3>
+    <h3 id="timer">Time: 60</h3>
+    <button class="btn btn-danger" id="btn_audio">Mute</button>
+    <button class="btn btn-danger" id="btn_startstop">Start</button>
+</div>
+<div class="middle">
+
+    <div class="col-md-6">
+        <h4>Click the logo below!</h4>
+        <img id="radius" src="http://www.radiuscollege.nl/themes/radius/images/logo.png" draggable="false">
+    </div>
+    <div class="col-md-6">
+        <div class="facilities col-md-12">
+            <h4>Facilities</h4>
+            <div id="facilityMouse">
+                <p class="amount col-md-1">0</p>
+                <button class="button btn btn-danger col-md-8" >Mouse</button>
+                <p class="price col-md-2">5</p>
+            </div>
+            <div id="facilityKeyboard">
+                <p class="amount col-md-1">0</p>
+                <button class="button btn btn-danger col-md-8">Keyboard</button>
+                <p class="price col-md-2">25</p>
+            </div>
+            <div id="facilityStudent">
+                <p class="amount col-md-1">0</p>
+                <button class="button btn btn-danger col-md-8">Student</button>
+                <p class="price col-md-2">100</p>
+            </div>
+            <div id="facilityTeacher">
+                <p class="amount col-md-1">0</p>
+                <button  class="button btn btn-danger col-md-8">Teacher</button>
+                <p class="price col-md-2">400</p>
+            </div>
+            <div id="facilityHeadmaster">
+                <p class="amount col-md-1">0</p>
+                <button class="button btn btn-danger col-md-8">Headmaster</button>
+                <p class="price col-md-2">1000</p>
+            </div>
+        </div>
+
+        <div class="upgrades col-md-12">
+            <h4>Upgrades</h4>
+            <div id="upgradeClick">
+                <p class="amount col-md-1">0</p>
+                <button class="button btn btn-danger col-md-8">Click+1CPS</button>
+                <p class="price col-md-2">10</p>
+            </div>
+            <div id="upgradeClickPercent">
+                <p class="amount col-md-1">0</p>
+                <button class="button btn btn-danger col-md-8">Click+1%CPS</button>
+                <p class="price col-md-2">100</p>
+            </div>
+            <div id="upgradeMouse">
+                <p class="amount col-md-1">0</p>
+                <button class="button btn btn-danger col-md-8">Mouse+1CPS</button>
+                <p class="price col-md-2">50</p>
+            </div>
+            <div id="upgradeKeyboard">
+                <p class="amount col-md-1">0</p>
+                <button class="button btn btn-danger col-md-8">Keyboard+5CPS</button>
+                <p class="price col-md-2">250</p>
+            </div>
+            <div id="upgradeStudent">
+                <p class="amount col-md-1">0</p>
+                <button class="button btn btn-danger col-md-8">Student+25CPS</button>
+                <p class="price col-md-2">1000</p>
+            </div>
+            <div id="upgradeTeacher">
+                <p class="amount col-md-1">0</p>
+                <button class="button btn btn-danger col-md-8">Teacher+90CPS</button>
+                <p class="price col-md-2">4000</p>
+            </div>
+            <div id="upgradeHeadmaster">
+                <p class="amount col-md-1">0</p>
+                <button class="button btn btn-danger col-md-8">Headmaster+235CPS</button>
+                <p class="price col-md-2">10000</p>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="right">
+
+</div>
+
+
+<script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+<script src="js/script.js"></script>
+</body>
+</html>

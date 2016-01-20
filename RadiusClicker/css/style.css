@@ -1,0 +1,51 @@
+h3, h4, p {
+    color: #ffffff;
+}
+
+body {
+    overflow-y: hidden;
+    overflow-x: hidden;
+    box-sizing: border-box;
+}
+
+.left {
+    width: 25vw;
+    height: 100vh;
+    float: left;
+    position: relative;
+    padding-left: 25px;
+    background: #a9040e;
+}
+
+.middle {
+    width: 50vw;
+    height: 100vh;
+    background: #e10613;
+    position: relative;
+    float: left;
+}
+
+.right {
+    width: 25vw;
+    height: 100vh;
+    float: left;
+    background: #a9040e;
+    position: relative;
+    padding-left: 25px;
+}
+
+#radius:hover {
+    cursor: pointer;
+}
+
+#btn_startstop {
+    position: absolute;
+    right: 10px;
+    bottom: 10px;
+}
+
+#btn_audio {
+    position: absolute;
+    right: 90px;
+    bottom: 10px;
+}
