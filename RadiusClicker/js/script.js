@@ -47,17 +47,16 @@ var u_headmasterAmount = 0,
 var audiobg = document.getElementById("myAudio"),
     muted = false;
 
-$(function(){
-    startMusic();
-});
-
 var startMusic = function() {
     muted = false;
-    $('#btn_audio').html('Mute');
+     $('#btn_audio').html('Mute');
+    if (audiobg)
+    {
     audiobg.play();
     audiobg.autoplay = true;
     audiobg.loop = true;
     audiobg.volume = 0.3;
+  }
 };
 
 var stopMusic = function() {
@@ -364,10 +363,42 @@ $('.right').on('click', '#btn_again', function(){
 
     console.log(name + ' ' + totalcounter);
 
-    //setScore(name, totalcounter);
+    setScore(name, totalcounter);
 
     $('#btn_startstop').css('display', 'inline');
 
     $('#btn_startstop').trigger('click');
     $('#btn_startstop').trigger('click');
 });
+
+
+function setScore(username, score) {
+    
+    var highscores = JSON.parse(localStorage.getItem('clickerHighScore')) || [];
+
+    var input = {
+      username: username,
+      score: score
+    }
+
+    highscores.push(input);
+    localStorage['clickerHighScore'] = JSON.stringify(highscores);
+
+}
+
+function updateClickerBoard() {
+    var highscores = JSON.parse(localStorage.getItem('clickerHighScore')) || [];
+
+    highscores = JSLINQ(highscores).
+                    OrderByDescending(function(item){
+                      return item.score 
+                    });
+    var container = $('#clickerHighScore');
+    container.empty();
+
+    for (var i = 0 ; i < 10; i++)
+    {
+      container.append('<tr><td>'+ (i+1) +'</td><td>' + highscores.items[i].username + '</td><td>' + highscores.items[i].score + '</td></tr>');
+    }
+}
+
