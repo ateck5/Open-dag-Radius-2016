@@ -1,3 +1,4 @@
+
 var bwidth = $('.zlam').outerWidth(),
     bheight = $('.zlam').outerHeight();
     
@@ -10,11 +11,6 @@ var counter = 0,
     
 var audiobg = document.getElementById("myAudio"),
     muted = false;
-
-$(function(){
-    startMusic();
-    setInterval(updateScoreBoard, 4000);
-});
 
 var startMusic = function() {
     muted = false;
@@ -178,8 +174,8 @@ function setScore(username, score) {
 
 }
 
-function updateScoreBoard() {
-    var highscores = JSON.parse(localStorage.getItem('zlamHighScore')) || [];
+function updateZlamBoard() {
+    var highscores = JSON.parse(localStorage.getItem( 'zlamHighScore')) || [];
 
     highscores = JSLINQ(highscores).
                     OrderByDescending(function(item){
@@ -187,7 +183,6 @@ function updateScoreBoard() {
                     });
     var container = $('#zlamHighScore');
     container.empty();
-
     for (var i = 0 ; i < 10; i++)
     {
       container.append('<tr><td>'+ (i+1) +'</td><td>' + highscores.items[i].username + '</td><td>' + highscores.items[i].score + '</td></tr>');
